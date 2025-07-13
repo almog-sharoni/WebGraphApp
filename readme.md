@@ -179,18 +179,6 @@ max_temp
 - **`graph.ParallelAgent`**: Parallel processing
 - **`graph.IncAgent`**: Increment operation
 
-### Sample Configuration
-
-```properties
-# Temperature adjustment system
-graph.PlusAgent
-temperature,offset
-adjusted_temp
-
-graph.BinOpAgent
-adjusted_temp,threshold
-comparison_result
-```
 
 ## 🌐 API Endpoints
 
