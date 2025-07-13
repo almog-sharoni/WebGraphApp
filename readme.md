@@ -90,9 +90,13 @@ The system supports various types of agents including mathematical operations (P
 
 ## 🚀 How to Run
 
-### Quick Start (on macOS/Linux)
+### Quick Start
 
-1. **Make the startup script executable** (if on macOS/Linux):
+**Important**: You must use Bash to run the startup script:
+- **Linux/macOS**: Use the default terminal
+- **Windows**: Use Git Bash or WSL (Windows Subsystem for Linux)
+
+1. **Make the startup script executable**:
    ```bash
    chmod +x start_server.sh
    ```
