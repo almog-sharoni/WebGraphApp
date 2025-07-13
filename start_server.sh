@@ -10,7 +10,7 @@ cd "$(dirname "$0")/project_biu"
 
 # Compile the Java files
 echo "📦 Compiling Java files..."
-find . -name "*.java" -print0 | xargs -0 javac -cp .
+find . -name "*.java" -print0 | xargs -0 javac -encoding UTF-8 -cp .
 
 if [ $? -eq 0 ]; then
     echo "✅ Compilation successful!"

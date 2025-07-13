@@ -115,7 +115,7 @@ If you prefer to run manually:
 cd project_biu
 
 # Compile all Java files
-find . -name "*.java" -print0 | xargs -0 javac -cp .
+find . -name "*.java" -print0 | xargs -0 javac -encoding UTF-8 -cp .
 
 # Run the main server
 java -cp . Main
