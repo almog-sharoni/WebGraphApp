@@ -2,6 +2,13 @@
 
 A Java-based computation graph system with an interactive web interface for creating, managing, and visualizing computational workflows using agent-based processing nodes.
 
+## 🎥 Demo Video
+
+[![Project Demo](https://img.shields.io/badge/Watch-Demo%20Video-red?style=for-the-badge&logo=youtube)](https://www.youtube.com/watch?v=rQXX2NNV5N0)
+
+> **Click the badge above to watch a comprehensive demonstration of the Computation Graph System in action!**
+
+
 ## 📋 Table of Contents
 
 - [Overview](#overview)
