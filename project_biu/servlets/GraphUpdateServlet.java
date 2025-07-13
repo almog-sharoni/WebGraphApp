@@ -7,17 +7,23 @@ import server.RequestParser.RequestInfo;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.io.PrintWriter;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 
 /**
- * GraphUpdateServlet generates real-time visual graph updates that reflect current topic values and agent states.
+ * GraphUpdateServlet generates real-time visual graph updates using a template-based approach.
  * 
  * This servlet:
- * 1. Creates a graph from current topics and agents
- * 2. Updates graph nodes with current topic values and agent results
- * 3. Returns an HTML page with SVG visualization showing real-time data
- * 4. Makes the graph nodes visually update when topic messages are published
+ * 1. Loads the graph.html template file
+ * 2. Creates a graph from current topics and agents
+ * 3. Updates graph nodes with current topic values and agent results
+ * 4. Replaces template placeholders with current SVG and info content
+ * 5. Returns the populated HTML template
  */
 public class GraphUpdateServlet implements Servlet {
+
+    private static final String SVG_PLACEHOLDER = "{{SVG_CONTENT}}";
+    private static final String INFO_PLACEHOLDER = "{{GRAPH_INFO}}";
 
     @Override
     public void handle(RequestInfo ri, OutputStream toClient) throws Exception {
@@ -28,8 +34,8 @@ public class GraphUpdateServlet implements Servlet {
         // Update nodes with current topic values and agent states
         updateNodesWithCurrentValues(graph);
         
-        // Generate HTML response with updated graph visualization
-        generateGraphHtmlResponse(toClient, graph);
+        // Load template and generate response
+        generateTemplateBasedResponse(toClient, graph);
     }
 
     /**
@@ -80,74 +86,188 @@ public class GraphUpdateServlet implements Servlet {
     }
 
     /**
-     * Generates an HTML response containing the updated graph visualization.
-     * The response includes SVG graphics showing current topic values and agent results.
+     * Loads the HTML template and replaces placeholders with current graph data.
+     * This approach is more efficient than generating the entire HTML structure each time.
      */
-    private void generateGraphHtmlResponse(OutputStream toClient, Graph graph) throws IOException {
+    private void generateTemplateBasedResponse(OutputStream toClient, Graph graph) throws IOException {
         PrintWriter writer = new PrintWriter(toClient);
         
-        // Send HTTP headers
-        writer.println("HTTP/1.1 200 OK");
-        writer.println("Content-Type: text/html; charset=UTF-8");
-        writer.println("Connection: close");
-        writer.println(); // Empty line to separate headers from body
-        
-        // Start HTML document
-        writer.println("<!DOCTYPE html>");
-        writer.println("<html>");
-        writer.println("<head>");
-        writer.println("    <title>Real-time Computation Graph</title>");
-        writer.println("    <style>");
-        writer.println("        body { font-family: Arial, sans-serif; background: #f5f5f5; margin: 0; padding: 20px; }");
-        writer.println("        .graph-container { background: white; border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); padding: 20px; }");
-        writer.println("        .graph-title { text-align: center; color: #333; margin-bottom: 20px; font-size: 24px; font-weight: bold; }");
-        writer.println("        .graph-canvas { border: 2px solid #ddd; border-radius: 8px; background: #fafafa; width: 100%; height: 600px; position: relative; display: flex; justify-content: center; align-items: center; }");
-        writer.println("        svg { width: 800px; height: 600px; max-width: 100%; max-height: 100%; }");
-        writer.println("        .edge { stroke: #333; stroke-width: 2; marker-end: url(#arrowhead); }");
-        
-        // Topic nodes (rectangles) - Blue theme
-        writer.println("        .topic-node { fill: #4ECDC4; stroke: #26A69A; stroke-width: 2; }");
-        writer.println("        .topic-text { fill: white; font-weight: bold; font-size: 12px; }");
-        
-        // Agent nodes (circles) - Red theme  
-        writer.println("        .agent-node { fill: #FF6B6B; stroke: #E57373; stroke-width: 2; }");
-        writer.println("        .agent-text { fill: white; font-weight: bold; font-size: 12px; }");
-        
-        // Value and result text
-        writer.println("        .value-text { fill: #0066CC; font-weight: bold; font-size: 16px; }");
-        writer.println("        .result-text { fill: #CC6600; font-weight: bold; font-size: 16px; }");
-        writer.println("        .message-text { fill: #333; font-size: 16px; font-weight: normal; }");
-        writer.println("    </style>");
-        writer.println("</head>");
-        writer.println("<body>");
-        writer.println("    <div class='graph-container'>");
-        writer.println("        <div class='graph-title'>🔗 Real-time Computation Graph</div>");
-        
-
-        
-        // Graph canvas with SVG
-        writer.println("        <div class='graph-canvas'>");
-        writer.println("            <svg viewBox='0 0 800 600' width='800' height='600'>");
-        
-        // Generate SVG content for the graph
-        for (String svgLine : HtmlGraphWriter.getGraphSVG(graph)) {
-            writer.println("                " + svgLine);
+        try {
+            // Load the HTML template
+            String template = loadTemplate();
+            
+            // Generate SVG content
+            String svgContent = generateSvgContent(graph);
+            
+            // Generate graph info content
+            String graphInfo = generateGraphInfo(graph);
+            
+            // Replace placeholders in template
+            String finalHtml = template
+                .replace(SVG_PLACEHOLDER, svgContent)
+                .replace(INFO_PLACEHOLDER, graphInfo);
+            
+            // Send HTTP headers
+            writer.println("HTTP/1.1 200 OK");
+            writer.println("Content-Type: text/html; charset=UTF-8");
+            writer.println("Connection: close");
+            writer.println(); // Empty line to separate headers from body
+            
+            // Send the populated template
+            writer.print(finalHtml);
+            
+        } catch (Exception e) {
+            // If any error occurs, send error response
+            sendErrorResponse(writer, "Error generating graph: " + e.getMessage());
+            e.printStackTrace(); // Debug: print stack trace to console
         }
         
-        writer.println("            </svg>");
-        writer.println("        </div>");
-        writer.println("    </div>");
-        
-        // JavaScript - no auto-refresh, graph updates only when needed
-        writer.println("    <script>");
-        writer.println("        // Graph is updated only when configuration is uploaded or messages are sent");
-        writer.println("        console.log('Real-time computation graph loaded');");
-        writer.println("    </script>");
-        
-        writer.println("</body>");
-        writer.println("</html>");
-        
         writer.flush();
+    }
+
+    /**
+     * Loads the HTML template from the file system.
+     * Tries multiple possible paths to find the template file.
+     */
+    private String loadTemplate() throws IOException {
+        // Try multiple possible paths for the template file
+        String[] possiblePaths = {
+            "../html_files/graph.html",           // From project_biu directory
+            "html_files/graph.html",              // From app_main directory  
+            "../../html_files/graph.html",        // From deeper nested directory
+            "/Users/lmwgsrwny/Library/Mobile Documents/com~apple~CloudDocs/Desktop/לימודים/תואר שני/קורסים/Advanced Programming/app_main/html_files/graph.html" // Absolute path as fallback
+        };
+        
+        // Debug: log current working directory
+        System.out.println("Current working directory: " + System.getProperty("user.dir"));
+        
+        for (String path : possiblePaths) {
+            try {
+                System.out.println("Trying template path: " + path);
+                if (Files.exists(Paths.get(path))) {
+                    System.out.println("Found template at: " + path);
+                    return new String(Files.readAllBytes(Paths.get(path)));
+                }
+            } catch (Exception e) {
+                System.out.println("Failed to load from path " + path + ": " + e.getMessage());
+                // Continue to next path
+            }
+        }
+        
+        System.out.println("Could not find template file, using inline template");
+        // If all paths fail, return a simple inline template
+        return getInlineTemplate();
+    }
+
+    /**
+     * Returns an inline HTML template as a fallback when the external template file cannot be loaded.
+     */
+    private String getInlineTemplate() {
+        return "<!DOCTYPE html>\n" +
+               "<html>\n" +
+               "<head>\n" +
+               "    <title>Real-time Computation Graph</title>\n" +
+               "    <style>\n" +
+               "        body { font-family: Arial, sans-serif; background: #f5f5f5; margin: 0; padding: 20px; }\n" +
+               "        .graph-container { background: white; border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); padding: 20px; }\n" +
+               "        .graph-title { text-align: center; color: #333; margin-bottom: 20px; font-size: 24px; font-weight: bold; }\n" +
+               "        .graph-canvas { border: 2px solid #ddd; border-radius: 8px; background: #fafafa; width: 100%; height: 600px; position: relative; display: flex; justify-content: center; align-items: center; }\n" +
+               "        svg { width: 800px; height: 600px; max-width: 100%; max-height: 100%; }\n" +
+               "        .topic-node { fill: #4ECDC4; stroke: #26A69A; stroke-width: 2; }\n" +
+               "        .topic-text { fill: white; font-weight: bold; font-size: 12px; }\n" +
+               "        .agent-node { fill: #FF6B6B; stroke: #E57373; stroke-width: 2; }\n" +
+               "        .agent-text { fill: white; font-weight: bold; font-size: 12px; }\n" +
+               "        .value-text { fill: #0066CC; font-weight: bold; font-size: 16px; }\n" +
+               "        .info-panel { background: #f8f9fa; border: 1px solid #dee2e6; border-radius: 5px; padding: 15px; margin-top: 20px; }\n" +
+               "    </style>\n" +
+               "</head>\n" +
+               "<body>\n" +
+               "    <div class='graph-container'>\n" +
+               "        <div class='graph-title'>🔗 Real-time Computation Graph</div>\n" +
+               "        <div class='graph-canvas'>\n" +
+               "            <svg viewBox='0 0 800 600' width='800' height='600'>\n" +
+               "                {{SVG_CONTENT}}\n" +
+               "            </svg>\n" +
+               "        </div>\n" +
+               "        <div class=\"info-panel\">\n" +
+               "            <h4>📋 Graph Information</h4>\n" +
+               "            <div id=\"graphInfo\">\n" +
+               "                {{GRAPH_INFO}}\n" +
+               "            </div>\n" +
+               "        </div>\n" +
+               "    </div>\n" +
+               "    <script>\n" +
+               "        console.log('Real-time computation graph loaded (inline template)');\n" +
+               "    </script>\n" +
+               "</body>\n" +
+               "</html>";
+    }
+
+    /**
+     * Generates SVG content using HtmlGraphWriter and joins it into a single string.
+     */
+    private String generateSvgContent(Graph graph) {
+        StringBuilder svgBuilder = new StringBuilder();
+        for (String svgLine : HtmlGraphWriter.getGraphSVG(graph)) {
+            svgBuilder.append(svgLine).append("\n");
+        }
+        return svgBuilder.toString();
+    }
+
+    /**
+     * Generates graph information content for the info panel.
+     */
+    private String generateGraphInfo(Graph graph) {
+        StringBuilder info = new StringBuilder();
+        
+        int nodeCount = graph.size();
+        int topicCount = 0;
+        int agentCount = 0;
+        
+        for (Node node : graph) {
+            if (node.getName().startsWith("T")) {
+                topicCount++;
+            } else if (node.getName().startsWith("A")) {
+                agentCount++;
+            }
+        }
+        
+        info.append("<p><strong>Graph Statistics:</strong></p>");
+        info.append("<ul>");
+        info.append("<li>Total Nodes: ").append(nodeCount).append("</li>");
+        info.append("<li>Topics: ").append(topicCount).append("</li>");
+        info.append("<li>Agents: ").append(agentCount).append("</li>");
+        info.append("</ul>");
+        
+        if (nodeCount == 0) {
+            info.append("<p>No computation graph available. Upload a configuration to see the graph.</p>");
+        } else {
+            info.append("<p>Graph shows real-time computation flow with current topic values.</p>");
+            info.append("<p><strong>Legend:</strong></p>");
+            info.append("<ul>");
+            info.append("<li><span style='color: #4ECDC4; font-weight: bold;'>■</span> Topics (rectangles)</li>");
+            info.append("<li><span style='color: #FF6B6B; font-weight: bold;'>■</span> Agents (circles)</li>");
+            info.append("</ul>");
+        }
+        
+        return info.toString();
+    }
+
+    /**
+     * Sends an error response when template loading or processing fails.
+     */
+    private void sendErrorResponse(PrintWriter writer, String errorMessage) {
+        writer.println("HTTP/1.1 500 Internal Server Error");
+        writer.println("Content-Type: text/html; charset=UTF-8");
+        writer.println("Connection: close");
+        writer.println();
+        
+        writer.println("<!DOCTYPE html>");
+        writer.println("<html><head><title>Graph Error</title></head>");
+        writer.println("<body>");
+        writer.println("<h1>Graph Loading Error</h1>");
+        writer.println("<p>" + errorMessage + "</p>");
+        writer.println("</body></html>");
     }
 
     @Override

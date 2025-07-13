@@ -8,7 +8,7 @@ import java.util.*;
 public class HtmlGraphWriter {
     /**
      * Returns SVG lines for the current graph visualization (nodes, edges, labels).
-     * This can be injected into the <svg> element in graph.html.
+     * This content is used to replace the {{SVG_CONTENT}} placeholder in the graph.html template.
      */
     public static List<String> getGraphSVG(Graph g) {
         List<String> svg = new ArrayList<>();
@@ -26,7 +26,7 @@ public class HtmlGraphWriter {
         }
         
         // Center the graph in a 800x600 viewBox
-        int cx = 400, cy = 300, r = Math.min(180, 250 - n * 5); // Adjust radius based on node count
+        int cx = 400, cy = 300, r = Math.min(250, 350 - n * 3); // Enlarged radius: increased base from 180 to 250, max from 250 to 350, reduced shrink factor from 5 to 3
         Map<Node, Integer[]> nodePos = new HashMap<>();
         Map<Node, Integer> nodeRadii = new HashMap<>(); // Store calculated radii for each node
         int i = 0;
@@ -74,7 +74,56 @@ public class HtmlGraphWriter {
             i++;
         }
         
-        // Edges with arrowheads - calculate connection points to avoid overlapping with nodes
+        // Nodes and labels (drawn first so arrows appear on top)
+        for (Node node : g) {
+            Integer[] pos = nodePos.get(node);
+            String nodeName = node.getName();
+            
+            // Remove "T" or "A" prefix from node name for display
+            String displayName = nodeName;
+            if (displayName.startsWith("T") || displayName.startsWith("A")) {
+                displayName = displayName.substring(1);
+            }
+            
+            // Determine if this is a topic (starts with T) or agent (starts with A)
+            boolean isTopic = nodeName.startsWith("T");
+            
+            // Get adaptive size for this node
+            int nodeRadius = nodeRadii.get(node);
+            
+            // Get message/value for the node
+            Object msg = null;
+            try { msg = node.getMsg(); } catch (Exception e) {}
+            String msgText = "unknown";
+            if (msg != null) {
+                if (msg instanceof Message) {
+                    // Extract the actual text from the Message object
+                    msgText = ((Message) msg).asText;
+                } else {
+                    msgText = msg.toString();
+                }
+            }
+            
+            if (isTopic) {
+                // Topics as adaptive rectangles
+                int rectWidth = Math.max(nodeRadius * 2, displayName.length() * 10 + 20);
+                int rectHeight = 40;
+                svg.add(String.format("<rect class='topic-node' x='%d' y='%d' width='%d' height='%d' rx='8' />", 
+                    pos[0] - rectWidth/2, pos[1] - rectHeight/2, rectWidth, rectHeight));
+                svg.add(String.format("<text x='%d' y='%d' text-anchor='middle' alignment-baseline='middle' class='topic-text'>%s</text>", 
+                    pos[0], pos[1], displayName));
+                // Show topic value above the topic
+                svg.add(String.format("<text x='%d' y='%d' text-anchor='middle' alignment-baseline='baseline' class='value-text'>%s</text>", 
+                    pos[0], pos[1] - rectHeight/2 - 15, msgText));
+            } else {
+                // Agents as adaptive circles
+                svg.add(String.format("<circle class='agent-node' cx='%d' cy='%d' r='%d'/>", pos[0], pos[1], nodeRadius));
+                svg.add(String.format("<text x='%d' y='%d' text-anchor='middle' alignment-baseline='middle' class='agent-text'>%s</text>", 
+                    pos[0], pos[1], displayName));
+            }
+        }
+
+        // Edges with arrowheads (drawn last so they appear on top of nodes)
         for (Node node : g) {
             for (Node out : node.getEdges()) {
                 Integer[] from = nodePos.get(node);
@@ -138,61 +187,12 @@ public class HtmlGraphWriter {
                 }
             }
         }
-        
-        // Nodes and labels
-        for (Node node : g) {
-            Integer[] pos = nodePos.get(node);
-            String nodeName = node.getName();
-            
-            // Remove "T" or "A" prefix from node name for display
-            String displayName = nodeName;
-            if (displayName.startsWith("T") || displayName.startsWith("A")) {
-                displayName = displayName.substring(1);
-            }
-            
-            // Determine if this is a topic (starts with T) or agent (starts with A)
-            boolean isTopic = nodeName.startsWith("T");
-            
-            // Get adaptive size for this node
-            int nodeRadius = nodeRadii.get(node);
-            
-            // Get message/value for the node
-            Object msg = null;
-            try { msg = node.getMsg(); } catch (Exception e) {}
-            String msgText = "unknown";
-            if (msg != null) {
-                if (msg instanceof Message) {
-                    // Extract the actual text from the Message object
-                    msgText = ((Message) msg).asText;
-                } else {
-                    msgText = msg.toString();
-                }
-            }
-            
-            if (isTopic) {
-                // Topics as adaptive rectangles
-                int rectWidth = Math.max(nodeRadius * 2, displayName.length() * 10 + 20);
-                int rectHeight = 40;
-                svg.add(String.format("<rect class='topic-node' x='%d' y='%d' width='%d' height='%d' rx='8' />", 
-                    pos[0] - rectWidth/2, pos[1] - rectHeight/2, rectWidth, rectHeight));
-                svg.add(String.format("<text x='%d' y='%d' text-anchor='middle' alignment-baseline='middle' class='topic-text'>%s</text>", 
-                    pos[0], pos[1], displayName));
-                // Show topic value above the topic
-                svg.add(String.format("<text x='%d' y='%d' text-anchor='middle' alignment-baseline='baseline' class='value-text'>%s</text>", 
-                    pos[0], pos[1] - rectHeight/2 - 15, msgText));
-            } else {
-                // Agents as adaptive circles
-                svg.add(String.format("<circle class='agent-node' cx='%d' cy='%d' r='%d'/>", pos[0], pos[1], nodeRadius));
-                svg.add(String.format("<text x='%d' y='%d' text-anchor='middle' alignment-baseline='middle' class='agent-text'>%s</text>", 
-                    pos[0], pos[1], displayName));
-            }
-        }
         return svg;
     }
 
     /**
      * Returns HTML for the info panel for a given node (topic/message).
-     * This can be injected into the #graphInfo div in graph.html.
+     * This content can be used to replace the {{GRAPH_INFO}} placeholder in the graph.html template.
      */
     public static String getTopicInfo(Node node) {
         if (node == null) return "<p>No node selected.</p>";

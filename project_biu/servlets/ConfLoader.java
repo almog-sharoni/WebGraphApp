@@ -117,10 +117,10 @@ public class ConfLoader implements Servlet {
         // Agent nodes (circles) - Green theme  
         html.append(".agent-node{fill:#FF6B6B;stroke:#E57373;stroke-width:2;}");
         html.append(".agent-text{fill:white;font-weight:bold;font-size:12px;}");
-        // Message text
-        html.append(".value-text{fill:#0066CC;font-weight:bold;font-size:10px;}");
-        html.append(".result-text{fill:#CC6600;font-weight:bold;font-size:10px;}");
-        html.append(".message-text{fill:#333;font-size:10px;font-weight:normal;}");
+        // Message text - Updated to match GraphUpdateServlet font sizes
+        html.append(".value-text{fill:#0066CC;font-weight:bold;font-size:16px;}");
+        html.append(".result-text{fill:#CC6600;font-weight:bold;font-size:16px;}");
+        html.append(".message-text{fill:#333;font-size:16px;font-weight:normal;}");
         html.append("a{display:inline-block;margin-top:15px;padding:10px 20px;background:#007bff;color:white;text-decoration:none;border-radius:4px;}");
         html.append("a:hover{background:#0056b3;}");
         html.append("</style>");

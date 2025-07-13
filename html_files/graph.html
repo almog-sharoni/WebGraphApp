@@ -1,141 +1,53 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Computation Graph Visualization</title>
+    <title>Real-time Computation Graph</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 20px;
-            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
-            overflow: auto;
-        }
-        .graph-container {
-            background: white;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-            padding: 20px;
-            min-height: calc(100vh - 80px);
-        }
-        .graph-title {
-            text-align: center;
-            color: #333;
-            margin-bottom: 20px;
-            font-size: 24px;
-            font-weight: bold;
-        }
-        .graph-canvas {
-            border: 2px solid #ddd;
-            border-radius: 8px;
-            background: #fafafa;
-            width: 100%;
-            height: 500px;
-            position: relative;
-            overflow: visible;
-        }
-        .node {
-            position: absolute;
-            background: #4CAF50;
-            color: white;
-            padding: 10px 15px;
-            border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
-            font-weight: bold;
-            font-size: 14px;
-            text-align: center;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            border: 2px solid #45a049;
-        }
-        .node:hover {
-            transform: scale(1.05);
-            box-shadow: 0 4px 8px rgba(0,0,0,0.3);
-        }
-        .node.operator {
-            background: #FF6B6B;
-            border-color: #e55353;
-        }
-        .node.input {
-            background: #4ECDC4;
-            border-color: #3bb5ad;
-        }
-        .node.output {
-            background: #45B7D1;
-            border-color: #3498db;
-        }
-        .arrow {
-            position: absolute;
-            pointer-events: none;
-        }
-        .arrow-line {
-            stroke: #666;
-            stroke-width: 2;
-            marker-end: url(#arrowhead);
-        }
-        .controls {
-            margin-bottom: 20px;
-            text-align: center;
-        }
-        .btn {
-            background: #007bff;
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 5px;
-            cursor: pointer;
-            margin: 0 5px;
-            font-size: 14px;
-        }
-        .btn:hover {
-            background: #0056b3;
-        }
-        .info-panel {
-            background: #f8f9fa;
-            border: 1px solid #dee2e6;
-            border-radius: 5px;
-            padding: 15px;
-            margin-top: 20px;
-        }
+        body { font-family: Arial, sans-serif; background: #f5f5f5; margin: 0; padding: 20px; }
+        .graph-container { background: white; border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); padding: 20px; }
+        .graph-title { text-align: center; color: #333; margin-bottom: 20px; font-size: 24px; font-weight: bold; }
+        .graph-canvas { border: 2px solid #ddd; border-radius: 8px; background: #fafafa; width: 100%; height: 600px; position: relative; display: flex; justify-content: center; align-items: center; }
+        svg { width: 800px; height: 600px; max-width: 100%; max-height: 100%; }
+        .edge { stroke: #333; stroke-width: 2; marker-end: url(#arrowhead); }
+        
+        /* Topic nodes (rectangles) - Blue theme */
+        .topic-node { fill: #4ECDC4; stroke: #26A69A; stroke-width: 2; }
+        .topic-text { fill: white; font-weight: bold; font-size: 12px; }
+        
+        /* Agent nodes (circles) - Red theme */
+        .agent-node { fill: #FF6B6B; stroke: #E57373; stroke-width: 2; }
+        .agent-text { fill: white; font-weight: bold; font-size: 12px; }
+        
+        /* Value and result text */
+        .value-text { fill: #0066CC; font-weight: bold; font-size: 16px; }
+        .result-text { fill: #CC6600; font-weight: bold; font-size: 16px; }
+        .message-text { fill: #333; font-size: 16px; font-weight: normal; }
+        
+        /* Info panel */
+        .info-panel { background: #f8f9fa; border: 1px solid #dee2e6; border-radius: 5px; padding: 15px; margin-top: 20px; }
     </style>
 </head>
 <body>
-    <div class="graph-container">
-        <div class="graph-title">🔗 Computation Graph Visualization</div>
+    <div class='graph-container'>
+        <div class='graph-title'>🔗 Real-time Computation Graph</div>
         
-        <div class="controls">
-            <button class="btn" onclick="clearGraph()">Clear Graph</button>
-        </div>
-        
-        <div class="graph-canvas" id="graphCanvas">
-            <svg width="100%" height="100%" style="position: absolute; top: 0; left: 0;">
-                <defs>
-                    <marker id="arrowhead" markerWidth="10" markerHeight="7" 
-                            refX="9" refY="3.5" orient="auto">
-                        <polygon points="0 0, 10 3.5, 0 7" fill="#666" />
-                    </marker>
-                </defs>
+        <div class='graph-canvas'>
+            <svg viewBox='0 0 800 600' width='800' height='600'>
+                {{SVG_CONTENT}}
             </svg>
         </div>
         
         <div class="info-panel">
             <h4>📋 Graph Information</h4>
             <div id="graphInfo">
-                <p>Use the interface to build or display a computation graph.</p>
-                <p><strong>Node Types:</strong></p>
-                <ul>
-                    <li><span style="color: #4ECDC4; font-weight: bold;">■</span> Input Variables (A, B, C, etc.)</li>
-                    <li><span style="color: #FF6B6B; font-weight: bold;">■</span> Operators (+, -, *, /, etc.)</li>
-                    <li><span style="color: #45B7D1; font-weight: bold;">■</span> Output Results</li>
-                    <li><span style="color: #4CAF50; font-weight: bold;">■</span> Intermediate Results</li>
-                </ul>
+                {{GRAPH_INFO}}
             </div>
         </div>
     </div>
-
+    
     <script>
-        // No graph manipulation functions included. Only UI and info panel remain.
+        // Graph is updated only when configuration is uploaded or messages are sent
+        console.log('Real-time computation graph loaded');
     </script>
 </body>
 </html>

@@ -8700,3 +8700,989 @@ Exception in thread "pool-1-thread-3" java.lang.StackOverflowError
 	at graph.Topic.publish(Topic.java:94)
 	at graph.PlusAgent.callback(PlusAgent.java:80)
 	at graph.Topic.publish(Topic.java:94)
+[DEBUG] Request line: GET /app/index.html HTTP/1.1
+[DEBUG] Request line: GET /favicon.ico HTTP/1.1
+[DEBUG] Request line: GET /app/index.html HTTP/1.1
+[DEBUG] Request line: GET /app/form.html HTTP/1.1
+[DEBUG] Request line: GET /app/temp.html HTTP/1.1
+[DEBUG] Request line: GET /app/temp.html HTTP/1.1
+[DEBUG] Request line: GET /app/index.html HTTP/1.1
+[DEBUG] Request line: GET /app/form.html HTTP/1.1
+[DEBUG] Request line: GET /app/temp.html HTTP/1.1
+[DEBUG] Request line: GET /app/temp.html HTTP/1.1
+[DEBUG] Request line: POST /upload HTTP/1.1
+[DEBUG] Raw content length: 54
+[DEBUG] Content preview: graph.PlusAgent
+a,b
+sum
+graph.BinOpAgent
+sum,c
+result
+
+[DEBUG] Processing as plain content
+[DEBUG] Cleared previous topics
+[DEBUG] About to create config from file: /var/folders/f5/gsx5dxy538z0xyk3rpdwmjqr0000gn/T/conf_upload_4992303694262343852.conf
+java.lang.RuntimeException: Failed to create agent: graph.BinOpAgent
+	at configs.GenericConfig.create(GenericConfig.java:82)
+	at servlets.ConfLoader.handle(ConfLoader.java:95)
+	at server.MyHTTPServer.handleRequest(MyHTTPServer.java:295)
+	at server.MyHTTPServer.lambda$run$0(MyHTTPServer.java:178)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+Caused by: java.lang.NoSuchMethodException: graph.BinOpAgent.<init>([Ljava.lang.String;,[Ljava.lang.String;)
+	at java.base/java.lang.Class.getConstructor0(Class.java:3761)
+	at java.base/java.lang.Class.getConstructor(Class.java:2442)
+	at configs.GenericConfig.create(GenericConfig.java:74)
+	... 6 more
+[DEBUG] Request line: POST /upload HTTP/1.1
+[DEBUG] Raw content length: 54
+[DEBUG] Content preview: graph.PlusAgent
+a,b
+sum
+graph.BinOpAgent
+sum,c
+result
+
+[DEBUG] Processing as plain content
+[DEBUG] Cleared previous topics
+[DEBUG] About to create config from file: /var/folders/f5/gsx5dxy538z0xyk3rpdwmjqr0000gn/T/conf_upload_4608310870259841250.conf
+java.lang.RuntimeException: Failed to create agent: graph.BinOpAgent
+	at configs.GenericConfig.create(GenericConfig.java:82)
+	at servlets.ConfLoader.handle(ConfLoader.java:95)
+	at server.MyHTTPServer.handleRequest(MyHTTPServer.java:295)
+	at server.MyHTTPServer.lambda$run$0(MyHTTPServer.java:178)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+Caused by: java.lang.NoSuchMethodException: graph.BinOpAgent.<init>([Ljava.lang.String;,[Ljava.lang.String;)
+	at java.base/java.lang.Class.getConstructor0(Class.java:3761)
+	at java.base/java.lang.Class.getConstructor(Class.java:2442)
+	at configs.GenericConfig.create(GenericConfig.java:74)
+	... 6 more
+[DEBUG] Request line: POST /upload HTTP/1.1
+[DEBUG] Raw content length: 54
+[DEBUG] Content preview: graph.PlusAgent
+a,b
+sum
+graph.BinOpAgent
+sum,c
+result
+
+[DEBUG] Processing as plain content
+[DEBUG] Cleared previous topics
+[DEBUG] About to create config from file: /var/folders/f5/gsx5dxy538z0xyk3rpdwmjqr0000gn/T/conf_upload_9746222808673252131.conf
+java.lang.RuntimeException: Failed to create agent: graph.BinOpAgent
+	at configs.GenericConfig.create(GenericConfig.java:82)
+	at servlets.ConfLoader.handle(ConfLoader.java:95)
+	at server.MyHTTPServer.handleRequest(MyHTTPServer.java:295)
+	at server.MyHTTPServer.lambda$run$0(MyHTTPServer.java:178)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+Caused by: java.lang.NoSuchMethodException: graph.BinOpAgent.<init>([Ljava.lang.String;,[Ljava.lang.String;)
+	at java.base/java.lang.Class.getConstructor0(Class.java:3761)
+	at java.base/java.lang.Class.getConstructor(Class.java:2442)
+	at configs.GenericConfig.create(GenericConfig.java:74)
+	... 6 more
+[DEBUG] Request line: POST /upload HTTP/1.1
+[DEBUG] Raw content length: 185
+[DEBUG] Content preview: graph.PlusAgent
+A,B
+E
+graph.MaxAgent
+A,B
+F
+graph.MinAgent
+A,B
+G
+graph.IncAgent
+E
+H
+graph.IncAgent
+F
+I
+graph.IncAgent
+G
+J
+graph.MaxAgent
+H,I
+K
+------WebKitFormBoundaryBDzxrJbbMtooLc9Y--
+
+[DEBUG] Processing as plain content
+[DEBUG] Cleared previous topics
+[DEBUG] About to create config from file: /var/folders/f5/gsx5dxy538z0xyk3rpdwmjqr0000gn/T/conf_upload_14810305747414400296.conf
+[DEBUG] Config created successfully
+[DEBUG] Graph created with 16 nodes
+[DEBUG] Topics in TopicManager: 9
+[DEBUG] Request line: GET /publish HTTP/1.1
+[DEBUG] Request line: POST /upload HTTP/1.1
+[DEBUG] Raw content length: 108
+[DEBUG] Content preview: graph.PlusAgent
+temperature,offset
+adjusted_temp
+graph.BinOpAgent
+adjusted_temp,threshold
+comparison_result
+
+[DEBUG] Processing as plain content
+[DEBUG] Cleared previous topics
+[DEBUG] About to create config from file: /var/folders/f5/gsx5dxy538z0xyk3rpdwmjqr0000gn/T/conf_upload_12297559321407054476.conf
+java.lang.RuntimeException: Failed to create agent: graph.BinOpAgent
+	at configs.GenericConfig.create(GenericConfig.java:82)
+	at servlets.ConfLoader.handle(ConfLoader.java:95)
+	at server.MyHTTPServer.handleRequest(MyHTTPServer.java:295)
+	at server.MyHTTPServer.lambda$run$0(MyHTTPServer.java:178)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+Caused by: java.lang.NoSuchMethodException: graph.BinOpAgent.<init>([Ljava.lang.String;,[Ljava.lang.String;)
+	at java.base/java.lang.Class.getConstructor0(Class.java:3761)
+	at java.base/java.lang.Class.getConstructor(Class.java:2442)
+	at configs.GenericConfig.create(GenericConfig.java:74)
+	... 6 more
+[DEBUG] Request line: GET /app/index.html HTTP/1.1
+[DEBUG] Request line: GET /app/form.html HTTP/1.1
+[DEBUG] Request line: GET /app/temp.html HTTP/1.1
+[DEBUG] Request line: GET /app/temp.html HTTP/1.1
+[DEBUG] Request line: POST /upload HTTP/1.1
+[DEBUG] Raw content length: 54
+[DEBUG] Content preview: graph.PlusAgent
+a,b
+sum
+graph.BinOpAgent
+sum,c
+result
+
+[DEBUG] Processing as plain content
+[DEBUG] Cleared previous topics
+[DEBUG] About to create config from file: /var/folders/f5/gsx5dxy538z0xyk3rpdwmjqr0000gn/T/conf_upload_6600095976695162037.conf
+java.lang.RuntimeException: Failed to create agent: graph.BinOpAgent
+	at configs.GenericConfig.create(GenericConfig.java:82)
+	at servlets.ConfLoader.handle(ConfLoader.java:95)
+	at server.MyHTTPServer.handleRequest(MyHTTPServer.java:295)
+	at server.MyHTTPServer.lambda$run$0(MyHTTPServer.java:178)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+Caused by: java.lang.NoSuchMethodException: graph.BinOpAgent.<init>([Ljava.lang.String;,[Ljava.lang.String;)
+	at java.base/java.lang.Class.getConstructor0(Class.java:3761)
+	at java.base/java.lang.Class.getConstructor(Class.java:2442)
+	at configs.GenericConfig.create(GenericConfig.java:74)
+	... 6 more
+[DEBUG] Request line: POST /upload HTTP/1.1
+[DEBUG] Raw content length: 54
+[DEBUG] Content preview: graph.PlusAgent
+a,b
+sum
+graph.BinOpAgent
+sum,c
+result
+
+[DEBUG] Processing as plain content
+[DEBUG] Cleared previous topics
+[DEBUG] About to create config from file: /var/folders/f5/gsx5dxy538z0xyk3rpdwmjqr0000gn/T/conf_upload_5985148650343670802.conf
+java.lang.RuntimeException: Failed to create agent: graph.BinOpAgent
+	at configs.GenericConfig.create(GenericConfig.java:82)
+	at servlets.ConfLoader.handle(ConfLoader.java:95)
+	at server.MyHTTPServer.handleRequest(MyHTTPServer.java:295)
+	at server.MyHTTPServer.lambda$run$0(MyHTTPServer.java:178)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+Caused by: java.lang.NoSuchMethodException: graph.BinOpAgent.<init>([Ljava.lang.String;,[Ljava.lang.String;)
+	at java.base/java.lang.Class.getConstructor0(Class.java:3761)
+	at java.base/java.lang.Class.getConstructor(Class.java:2442)
+	at configs.GenericConfig.create(GenericConfig.java:74)
+	... 6 more
+[DEBUG] Request line: POST /upload HTTP/1.1
+[DEBUG] Raw content length: 108
+[DEBUG] Content preview: graph.PlusAgent
+temperature,offset
+adjusted_temp
+graph.BinOpAgent
+adjusted_temp,threshold
+comparison_result
+
+[DEBUG] Processing as plain content
+[DEBUG] Cleared previous topics
+[DEBUG] About to create config from file: /var/folders/f5/gsx5dxy538z0xyk3rpdwmjqr0000gn/T/conf_upload_11838873493123132467.conf
+java.lang.RuntimeException: Failed to create agent: graph.BinOpAgent
+	at configs.GenericConfig.create(GenericConfig.java:82)
+	at servlets.ConfLoader.handle(ConfLoader.java:95)
+	at server.MyHTTPServer.handleRequest(MyHTTPServer.java:295)
+	at server.MyHTTPServer.lambda$run$0(MyHTTPServer.java:178)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+Caused by: java.lang.NoSuchMethodException: graph.BinOpAgent.<init>([Ljava.lang.String;,[Ljava.lang.String;)
+	at java.base/java.lang.Class.getConstructor0(Class.java:3761)
+	at java.base/java.lang.Class.getConstructor(Class.java:2442)
+	at configs.GenericConfig.create(GenericConfig.java:74)
+	... 6 more
+[DEBUG] Request line: POST /upload HTTP/1.1
+[DEBUG] Raw content length: 54
+[DEBUG] Content preview: graph.PlusAgent
+a,b
+sum
+graph.BinOpAgent
+sum,c
+result
+
+[DEBUG] Processing as plain content
+[DEBUG] Cleared previous topics
+[DEBUG] About to create config from file: /var/folders/f5/gsx5dxy538z0xyk3rpdwmjqr0000gn/T/conf_upload_759990618234133842.conf
+java.lang.RuntimeException: Failed to create agent: graph.BinOpAgent
+	at configs.GenericConfig.create(GenericConfig.java:82)
+	at servlets.ConfLoader.handle(ConfLoader.java:95)
+	at server.MyHTTPServer.handleRequest(MyHTTPServer.java:295)
+	at server.MyHTTPServer.lambda$run$0(MyHTTPServer.java:178)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+Caused by: java.lang.NoSuchMethodException: graph.BinOpAgent.<init>([Ljava.lang.String;,[Ljava.lang.String;)
+	at java.base/java.lang.Class.getConstructor0(Class.java:3761)
+	at java.base/java.lang.Class.getConstructor(Class.java:2442)
+	at configs.GenericConfig.create(GenericConfig.java:74)
+	... 6 more
+[DEBUG] Request line: POST /upload HTTP/1.1
+[DEBUG] Raw content length: 185
+[DEBUG] Content preview: graph.PlusAgent
+A,B
+E
+graph.MaxAgent
+A,B
+F
+graph.MinAgent
+A,B
+G
+graph.IncAgent
+E
+H
+graph.IncAgent
+F
+I
+graph.IncAgent
+G
+J
+graph.MaxAgent
+H,I
+K
+------WebKitFormBoundaryK1x2jiIozuqsBaHY--
+
+[DEBUG] Processing as plain content
+[DEBUG] Cleared previous topics
+[DEBUG] About to create config from file: /var/folders/f5/gsx5dxy538z0xyk3rpdwmjqr0000gn/T/conf_upload_17170248903859588628.conf
+[DEBUG] Config created successfully
+[DEBUG] Graph created with 16 nodes
+[DEBUG] Topics in TopicManager: 9
+[DEBUG] Request line: GET /publish HTTP/1.1
+[DEBUG] Request line: GET /publish?topic=H&message=4 HTTP/1.1
+[DEBUG] Request line: GET /graph HTTP/1.1
+[DEBUG] Request line: GET /app/index.html HTTP/1.1
+[DEBUG] Request line: GET /app/form.html HTTP/1.1
+[DEBUG] Request line: GET /app/temp.html HTTP/1.1
+[DEBUG] Request line: GET /app/temp.html HTTP/1.1
+[DEBUG] Request line: POST /upload HTTP/1.1
+[DEBUG] Raw content length: 54
+[DEBUG] Content preview: graph.PlusAgent
+a,b
+sum
+graph.BinOpAgent
+sum,c
+result
+
+[DEBUG] Processing as plain content
+[DEBUG] Cleared previous topics
+[DEBUG] About to create config from file: /var/folders/f5/gsx5dxy538z0xyk3rpdwmjqr0000gn/T/conf_upload_7688976140878007389.conf
+java.lang.RuntimeException: Failed to create agent: graph.BinOpAgent
+	at configs.GenericConfig.create(GenericConfig.java:82)
+	at servlets.ConfLoader.handle(ConfLoader.java:95)
+	at server.MyHTTPServer.handleRequest(MyHTTPServer.java:295)
+	at server.MyHTTPServer.lambda$run$0(MyHTTPServer.java:178)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+Caused by: java.lang.NoSuchMethodException: graph.BinOpAgent.<init>([Ljava.lang.String;,[Ljava.lang.String;)
+	at java.base/java.lang.Class.getConstructor0(Class.java:3761)
+	at java.base/java.lang.Class.getConstructor(Class.java:2442)
+	at configs.GenericConfig.create(GenericConfig.java:74)
+	... 6 more
+[DEBUG] Request line: POST /upload HTTP/1.1
+[DEBUG] Raw content length: 54
+[DEBUG] Content preview: graph.PlusAgent
+a,b
+sum
+graph.BinOpAgent
+sum,c
+result
+
+[DEBUG] Processing as plain content
+[DEBUG] Cleared previous topics
+[DEBUG] About to create config from file: /var/folders/f5/gsx5dxy538z0xyk3rpdwmjqr0000gn/T/conf_upload_1394663861173472684.conf
+java.lang.RuntimeException: Failed to create agent: graph.BinOpAgent
+	at configs.GenericConfig.create(GenericConfig.java:82)
+	at servlets.ConfLoader.handle(ConfLoader.java:95)
+	at server.MyHTTPServer.handleRequest(MyHTTPServer.java:295)
+	at server.MyHTTPServer.lambda$run$0(MyHTTPServer.java:178)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+Caused by: java.lang.NoSuchMethodException: graph.BinOpAgent.<init>([Ljava.lang.String;,[Ljava.lang.String;)
+	at java.base/java.lang.Class.getConstructor0(Class.java:3761)
+	at java.base/java.lang.Class.getConstructor(Class.java:2442)
+	at configs.GenericConfig.create(GenericConfig.java:74)
+	... 6 more
+[DEBUG] Request line: POST /upload HTTP/1.1
+[DEBUG] Raw content length: 185
+[DEBUG] Content preview: graph.PlusAgent
+A,B
+E
+graph.MaxAgent
+A,B
+F
+graph.MinAgent
+A,B
+G
+graph.IncAgent
+E
+H
+graph.IncAgent
+F
+I
+graph.IncAgent
+G
+J
+graph.MaxAgent
+H,I
+K
+------WebKitFormBoundaryiDn4xcY3I8bD0wHg--
+
+[DEBUG] Processing as plain content
+[DEBUG] Cleared previous topics
+[DEBUG] About to create config from file: /var/folders/f5/gsx5dxy538z0xyk3rpdwmjqr0000gn/T/conf_upload_6473347638344221681.conf
+[DEBUG] Config created successfully
+[DEBUG] Graph created with 16 nodes
+[DEBUG] Topics in TopicManager: 9
+[DEBUG] Request line: GET /publish HTTP/1.1
+[DEBUG] Request line: GET /publish?topic=G&message=4 HTTP/1.1
+[DEBUG] Request line: GET /graph HTTP/1.1
+[DEBUG] Request line: POST /upload HTTP/1.1
+[DEBUG] Raw content length: 162
+[DEBUG] Content preview: ------WebKitFormBoundaryDTBzaK0uIHNmrADV
+Content-Disposition: form-data; name="configFile"; filename="working_config.conf"
+Content-Type: application/octet-stream
+
+[DEBUG] Processing as plain content
+[DEBUG] Cleared previous topics
+[DEBUG] About to create config from file: /var/folders/f5/gsx5dxy538z0xyk3rpdwmjqr0000gn/T/conf_upload_1679691397744520667.conf
+java.lang.RuntimeException: Failed to create agent: ------WebKitFormBoundaryDTBzaK0uIHNmrADV
+	at configs.GenericConfig.create(GenericConfig.java:82)
+	at servlets.ConfLoader.handle(ConfLoader.java:95)
+	at server.MyHTTPServer.handleRequest(MyHTTPServer.java:295)
+	at server.MyHTTPServer.lambda$run$0(MyHTTPServer.java:178)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+Caused by: java.lang.ClassNotFoundException: ------WebKitFormBoundaryDTBzaK0uIHNmrADV
+	at java.base/jdk.internal.loader.BuiltinClassLoader.loadClass(BuiltinClassLoader.java:641)
+	at java.base/jdk.internal.loader.ClassLoaders$AppClassLoader.loadClass(ClassLoaders.java:188)
+	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:526)
+	at java.base/java.lang.Class.forName0(Native Method)
+	at java.base/java.lang.Class.forName(Class.java:421)
+	at java.base/java.lang.Class.forName(Class.java:412)
+	at configs.GenericConfig.create(GenericConfig.java:73)
+	... 6 more
+[DEBUG] Request line: POST /upload HTTP/1.1
+[DEBUG] Raw content length: 82
+[DEBUG] Content preview: graph.PlusAgent
+input_a,input_b
+sum_output
+graph.IncAgent
+sum_output
+final_result
+
+[DEBUG] Processing as plain content
+[DEBUG] Cleared previous topics
+[DEBUG] About to create config from file: /var/folders/f5/gsx5dxy538z0xyk3rpdwmjqr0000gn/T/conf_upload_15230821637994569721.conf
+[DEBUG] Config created successfully
+[DEBUG] Graph created with 6 nodes
+[DEBUG] Topics in TopicManager: 4
+[DEBUG] Request line: GET /publish HTTP/1.1
+[DEBUG] Request line: GET /publish?topic=input_a&message=3 HTTP/1.1
+[DEBUG] Request line: GET /graph HTTP/1.1
+[DEBUG] Request line: GET /publish?topic=input_b&message=3 HTTP/1.1
+[DEBUG] Request line: GET /graph HTTP/1.1
+[DEBUG] Request line: GET /app/index.html HTTP/1.1
+[DEBUG] Request line: GET /app/form.html HTTP/1.1
+[DEBUG] Request line: GET /app/temp.html HTTP/1.1
+[DEBUG] Request line: GET /app/temp.html HTTP/1.1
+[DEBUG] Request line: POST /upload HTTP/1.1
+[DEBUG] Raw content length: 82
+[DEBUG] Content preview: graph.PlusAgent
+input_a,input_b
+sum_output
+graph.IncAgent
+sum_output
+final_result
+
+[DEBUG] Processing as plain content
+[DEBUG] Cleared previous topics
+[DEBUG] About to create config from file: /var/folders/f5/gsx5dxy538z0xyk3rpdwmjqr0000gn/T/conf_upload_9951982918734716463.conf
+[DEBUG] Config created successfully
+[DEBUG] Graph created with 6 nodes
+[DEBUG] Topics in TopicManager: 4
+[DEBUG] Request line: GET /publish HTTP/1.1
+[DEBUG] Request line: GET /publish?topic=input_b&message=3 HTTP/1.1
+[DEBUG] Request line: GET /graph HTTP/1.1
+[DEBUG] Request line: GET /publish?topic=input_a&message=4 HTTP/1.1
+[DEBUG] Request line: GET /graph HTTP/1.1
+[DEBUG] Request line: GET /app/index.html HTTP/1.1
+[DEBUG] Request line: GET /app/form.html HTTP/1.1
+[DEBUG] Request line: GET /app/temp.html HTTP/1.1
+[DEBUG] Request line: GET /app/temp.html HTTP/1.1
+[DEBUG] Request line: POST /upload HTTP/1.1
+[DEBUG] Raw content length: 185
+[DEBUG] Content preview: graph.PlusAgent
+A,B
+E
+graph.MaxAgent
+A,B
+F
+graph.MinAgent
+A,B
+G
+graph.IncAgent
+E
+H
+graph.IncAgent
+F
+I
+graph.IncAgent
+G
+J
+graph.MaxAgent
+H,I
+K
+------WebKitFormBoundary2fa9QrnssrdPNJgF--
+
+[DEBUG] Processing as plain content
+[DEBUG] Cleared previous topics
+[DEBUG] About to create config from file: /var/folders/f5/gsx5dxy538z0xyk3rpdwmjqr0000gn/T/conf_upload_13796500410669985485.conf
+[DEBUG] Config created successfully
+[DEBUG] Graph created with 16 nodes
+[DEBUG] Topics in TopicManager: 9
+[DEBUG] Request line: GET /publish HTTP/1.1
+[DEBUG] Request line: GET /publish?topic=G&message=4 HTTP/1.1
+[DEBUG] Request line: GET /graph HTTP/1.1
+[DEBUG] Request line: GET /app/index.html HTTP/1.1
+[DEBUG] Request line: GET /app/form.html HTTP/1.1
+[DEBUG] Request line: GET /app/temp.html HTTP/1.1
+[DEBUG] Request line: GET /app/temp.html HTTP/1.1
+[DEBUG] Request line: POST /upload HTTP/1.1
+[DEBUG] Raw content length: 185
+[DEBUG] Content preview: graph.PlusAgent
+A,B
+E
+graph.MaxAgent
+A,B
+F
+graph.MinAgent
+A,B
+G
+graph.IncAgent
+E
+H
+graph.IncAgent
+F
+I
+graph.IncAgent
+G
+J
+graph.MaxAgent
+H,I
+K
+------WebKitFormBoundarytBcX3o9ca7nzePpu--
+
+[DEBUG] Processing as plain content
+[DEBUG] Cleared previous topics
+[DEBUG] About to create config from file: /var/folders/f5/gsx5dxy538z0xyk3rpdwmjqr0000gn/T/conf_upload_2979081520460102723.conf
+[DEBUG] Config created successfully
+[DEBUG] Graph created with 16 nodes
+[DEBUG] Topics in TopicManager: 9
+[DEBUG] Request line: GET /publish HTTP/1.1
+[DEBUG] Request line: POST /upload HTTP/1.1
+[DEBUG] Raw content length: 162
+[DEBUG] Content preview: ------WebKitFormBoundarydafEqLM73v50klhG
+Content-Disposition: form-data; name="configFile"; filename="working_config.conf"
+Content-Type: application/octet-stream
+
+[DEBUG] Processing as plain content
+[DEBUG] Cleared previous topics
+[DEBUG] About to create config from file: /var/folders/f5/gsx5dxy538z0xyk3rpdwmjqr0000gn/T/conf_upload_11998977407191842169.conf
+java.lang.RuntimeException: Failed to create agent: ------WebKitFormBoundarydafEqLM73v50klhG
+	at configs.GenericConfig.create(GenericConfig.java:82)
+	at servlets.ConfLoader.handle(ConfLoader.java:95)
+	at server.MyHTTPServer.handleRequest(MyHTTPServer.java:295)
+	at server.MyHTTPServer.lambda$run$0(MyHTTPServer.java:178)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+Caused by: java.lang.ClassNotFoundException: ------WebKitFormBoundarydafEqLM73v50klhG
+	at java.base/jdk.internal.loader.BuiltinClassLoader.loadClass(BuiltinClassLoader.java:641)
+	at java.base/jdk.internal.loader.ClassLoaders$AppClassLoader.loadClass(ClassLoaders.java:188)
+	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:526)
+	at java.base/java.lang.Class.forName0(Native Method)
+	at java.base/java.lang.Class.forName(Class.java:421)
+	at java.base/java.lang.Class.forName(Class.java:412)
+	at configs.GenericConfig.create(GenericConfig.java:73)
+	... 6 more
+[DEBUG] Request line: POST /upload HTTP/1.1
+[DEBUG] Raw content length: 82
+[DEBUG] Content preview: graph.PlusAgent
+input_a,input_b
+sum_output
+graph.IncAgent
+sum_output
+final_result
+
+[DEBUG] Processing as plain content
+[DEBUG] Cleared previous topics
+[DEBUG] About to create config from file: /var/folders/f5/gsx5dxy538z0xyk3rpdwmjqr0000gn/T/conf_upload_12972351687164292553.conf
+[DEBUG] Config created successfully
+[DEBUG] Graph created with 6 nodes
+[DEBUG] Topics in TopicManager: 4
+[DEBUG] Request line: GET /publish HTTP/1.1
+[DEBUG] Request line: POST /upload HTTP/1.1
+[DEBUG] Raw content length: 82
+[DEBUG] Content preview: graph.PlusAgent
+input_a,input_b
+sum_output
+graph.IncAgent
+sum_output
+final_result
+
+[DEBUG] Processing as plain content
+[DEBUG] Cleared previous topics
+[DEBUG] About to create config from file: /var/folders/f5/gsx5dxy538z0xyk3rpdwmjqr0000gn/T/conf_upload_10671460687786725925.conf
+[DEBUG] Config created successfully
+[DEBUG] Graph created with 6 nodes
+[DEBUG] Topics in TopicManager: 4
+[DEBUG] Request line: GET /publish HTTP/1.1
+[DEBUG] Request line: POST /upload HTTP/1.1
+[DEBUG] Raw content length: 161
+[DEBUG] Content preview: ------WebKitFormBoundary0GXsBMAz7uKXKVgi
+Content-Disposition: form-data; name="configFile"; filename="test_confiig2.conf"
+Content-Type: application/octet-stream
+
+[DEBUG] Processing as plain content
+[DEBUG] Cleared previous topics
+[DEBUG] About to create config from file: /var/folders/f5/gsx5dxy538z0xyk3rpdwmjqr0000gn/T/conf_upload_14935187263693156409.conf
+java.lang.RuntimeException: Failed to create agent: ------WebKitFormBoundary0GXsBMAz7uKXKVgi
+	at configs.GenericConfig.create(GenericConfig.java:82)
+	at servlets.ConfLoader.handle(ConfLoader.java:95)
+	at server.MyHTTPServer.handleRequest(MyHTTPServer.java:295)
+	at server.MyHTTPServer.lambda$run$0(MyHTTPServer.java:178)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+Caused by: java.lang.ClassNotFoundException: ------WebKitFormBoundary0GXsBMAz7uKXKVgi
+	at java.base/jdk.internal.loader.BuiltinClassLoader.loadClass(BuiltinClassLoader.java:641)
+	at java.base/jdk.internal.loader.ClassLoaders$AppClassLoader.loadClass(ClassLoaders.java:188)
+	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:526)
+	at java.base/java.lang.Class.forName0(Native Method)
+	at java.base/java.lang.Class.forName(Class.java:421)
+	at java.base/java.lang.Class.forName(Class.java:412)
+	at configs.GenericConfig.create(GenericConfig.java:73)
+	... 6 more
+[DEBUG] Request line: POST /upload HTTP/1.1
+[DEBUG] Raw content length: 185
+[DEBUG] Content preview: graph.PlusAgent
+A,B
+E
+graph.MaxAgent
+A,B
+F
+graph.MinAgent
+A,B
+G
+graph.IncAgent
+E
+H
+graph.IncAgent
+F
+I
+graph.IncAgent
+G
+J
+graph.MaxAgent
+H,I
+K
+------WebKitFormBoundaryClCWBvdJeB48q5oJ--
+
+[DEBUG] Processing as plain content
+[DEBUG] Cleared previous topics
+[DEBUG] About to create config from file: /var/folders/f5/gsx5dxy538z0xyk3rpdwmjqr0000gn/T/conf_upload_18117538480829276415.conf
+[DEBUG] Config created successfully
+[DEBUG] Graph created with 16 nodes
+[DEBUG] Topics in TopicManager: 9
+[DEBUG] Request line: GET /publish HTTP/1.1
+[DEBUG] Request line: POST /upload HTTP/1.1
+[DEBUG] Raw content length: 132
+[DEBUG] Content preview: graph.PlusAgent
+A,B
+C
+graph.MultiplyAgent
+A,B
+D
+graph.IncAgent
+C
+E
+graph.PlusAgent
+D,E
+F
+------WebKitFormBoundaryBeaBLSaH1tZhBET6--
+
+[DEBUG] Processing as plain content
+[DEBUG] Cleared previous topics
+[DEBUG] About to create config from file: /var/folders/f5/gsx5dxy538z0xyk3rpdwmjqr0000gn/T/conf_upload_16039563308142091642.conf
+[DEBUG] Config created successfully
+[DEBUG] Graph created with 10 nodes
+[DEBUG] Topics in TopicManager: 6
+[DEBUG] Request line: GET /publish HTTP/1.1
+[DEBUG] Request line: POST /upload HTTP/1.1
+[DEBUG] Raw content length: 82
+[DEBUG] Content preview: graph.PlusAgent
+input_a,input_b
+sum_output
+graph.IncAgent
+sum_output
+final_result
+
+[DEBUG] Processing as plain content
+[DEBUG] Cleared previous topics
+[DEBUG] About to create config from file: /var/folders/f5/gsx5dxy538z0xyk3rpdwmjqr0000gn/T/conf_upload_6209141260397344553.conf
+[DEBUG] Config created successfully
+[DEBUG] Graph created with 6 nodes
+[DEBUG] Topics in TopicManager: 4
+[DEBUG] Request line: GET /publish HTTP/1.1
+[DEBUG] Request line: POST /upload HTTP/1.1
+[DEBUG] Raw content length: 54
+[DEBUG] Content preview: graph.PlusAgent
+a,b
+sum
+graph.BinOpAgent
+sum,c
+result
+
+[DEBUG] Processing as plain content
+[DEBUG] Cleared previous topics
+[DEBUG] About to create config from file: /var/folders/f5/gsx5dxy538z0xyk3rpdwmjqr0000gn/T/conf_upload_4218240807343237281.conf
+java.lang.RuntimeException: Failed to create agent: graph.BinOpAgent
+	at configs.GenericConfig.create(GenericConfig.java:82)
+	at servlets.ConfLoader.handle(ConfLoader.java:95)
+	at server.MyHTTPServer.handleRequest(MyHTTPServer.java:295)
+	at server.MyHTTPServer.lambda$run$0(MyHTTPServer.java:178)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+Caused by: java.lang.NoSuchMethodException: graph.BinOpAgent.<init>([Ljava.lang.String;,[Ljava.lang.String;)
+	at java.base/java.lang.Class.getConstructor0(Class.java:3761)
+	at java.base/java.lang.Class.getConstructor(Class.java:2442)
+	at configs.GenericConfig.create(GenericConfig.java:74)
+	... 6 more
+[DEBUG] Request line: POST /upload HTTP/1.1
+[DEBUG] Raw content length: 185
+[DEBUG] Content preview: graph.PlusAgent
+A,B
+E
+graph.MaxAgent
+A,B
+F
+graph.MinAgent
+A,B
+G
+graph.IncAgent
+E
+H
+graph.IncAgent
+F
+I
+graph.IncAgent
+G
+J
+graph.MaxAgent
+H,I
+K
+------WebKitFormBoundaryALSEs2Zw46Ej0DAv--
+
+[DEBUG] Processing as plain content
+[DEBUG] Cleared previous topics
+[DEBUG] About to create config from file: /var/folders/f5/gsx5dxy538z0xyk3rpdwmjqr0000gn/T/conf_upload_12388494605540250929.conf
+[DEBUG] Config created successfully
+[DEBUG] Graph created with 16 nodes
+[DEBUG] Topics in TopicManager: 9
+[DEBUG] Request line: GET /publish HTTP/1.1
+[DEBUG] Request line: POST /upload HTTP/1.1
+[DEBUG] Raw content length: 108
+[DEBUG] Content preview: graph.PlusAgent
+temperature,offset
+adjusted_temp
+graph.BinOpAgent
+adjusted_temp,threshold
+comparison_result
+
+[DEBUG] Processing as plain content
+[DEBUG] Cleared previous topics
+[DEBUG] About to create config from file: /var/folders/f5/gsx5dxy538z0xyk3rpdwmjqr0000gn/T/conf_upload_2202821611777238743.conf
+java.lang.RuntimeException: Failed to create agent: graph.BinOpAgent
+	at configs.GenericConfig.create(GenericConfig.java:82)
+	at servlets.ConfLoader.handle(ConfLoader.java:95)
+	at server.MyHTTPServer.handleRequest(MyHTTPServer.java:295)
+	at server.MyHTTPServer.lambda$run$0(MyHTTPServer.java:178)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+Caused by: java.lang.NoSuchMethodException: graph.BinOpAgent.<init>([Ljava.lang.String;,[Ljava.lang.String;)
+	at java.base/java.lang.Class.getConstructor0(Class.java:3761)
+	at java.base/java.lang.Class.getConstructor(Class.java:2442)
+	at configs.GenericConfig.create(GenericConfig.java:74)
+	... 6 more
+[DEBUG] Request line: POST /upload HTTP/1.1
+[DEBUG] Raw content length: 108
+[DEBUG] Content preview: graph.PlusAgent
+temperature,offset
+adjusted_temp
+graph.BinOpAgent
+adjusted_temp,threshold
+comparison_result
+
+[DEBUG] Processing as plain content
+[DEBUG] Cleared previous topics
+[DEBUG] About to create config from file: /var/folders/f5/gsx5dxy538z0xyk3rpdwmjqr0000gn/T/conf_upload_15445209781457219648.conf
+java.lang.RuntimeException: Failed to create agent: graph.BinOpAgent
+	at configs.GenericConfig.create(GenericConfig.java:82)
+	at servlets.ConfLoader.handle(ConfLoader.java:95)
+	at server.MyHTTPServer.handleRequest(MyHTTPServer.java:295)
+	at server.MyHTTPServer.lambda$run$0(MyHTTPServer.java:178)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+Caused by: java.lang.NoSuchMethodException: graph.BinOpAgent.<init>([Ljava.lang.String;,[Ljava.lang.String;)
+	at java.base/java.lang.Class.getConstructor0(Class.java:3761)
+	at java.base/java.lang.Class.getConstructor(Class.java:2442)
+	at configs.GenericConfig.create(GenericConfig.java:74)
+	... 6 more
+[DEBUG] Request line: POST /upload HTTP/1.1
+[DEBUG] Raw content length: 82
+[DEBUG] Content preview: graph.PlusAgent
+input_a,input_b
+sum_output
+graph.IncAgent
+sum_output
+final_result
+
+[DEBUG] Processing as plain content
+[DEBUG] Cleared previous topics
+[DEBUG] About to create config from file: /var/folders/f5/gsx5dxy538z0xyk3rpdwmjqr0000gn/T/conf_upload_15227651345746104320.conf
+[DEBUG] Config created successfully
+[DEBUG] Graph created with 6 nodes
+[DEBUG] Topics in TopicManager: 4
+[DEBUG] Request line: GET /publish HTTP/1.1
+[DEBUG] Request line: POST /upload HTTP/1.1
+[DEBUG] Raw content length: 185
+[DEBUG] Content preview: graph.PlusAgent
+A,B
+E
+graph.MaxAgent
+A,B
+F
+graph.MinAgent
+A,B
+G
+graph.IncAgent
+E
+H
+graph.IncAgent
+F
+I
+graph.IncAgent
+G
+J
+graph.MaxAgent
+H,I
+K
+------WebKitFormBoundaryNY1CxkU8aeoxuABl--
+
+[DEBUG] Processing as plain content
+[DEBUG] Cleared previous topics
+[DEBUG] About to create config from file: /var/folders/f5/gsx5dxy538z0xyk3rpdwmjqr0000gn/T/conf_upload_7649112605627644947.conf
+[DEBUG] Config created successfully
+[DEBUG] Graph created with 16 nodes
+[DEBUG] Topics in TopicManager: 9
+[DEBUG] Request line: GET /publish HTTP/1.1
+[DEBUG] Request line: GET /publish?topic=A&message=4 HTTP/1.1
+[DEBUG] Request line: GET /graph HTTP/1.1
+[DEBUG] Request line: GET /publish?topic=B&message=5 HTTP/1.1
+[DEBUG] Request line: GET /graph HTTP/1.1
+[DEBUG] Request line: GET /app/index.html HTTP/1.1
+[DEBUG] Request line: GET /app/form.html HTTP/1.1
+[DEBUG] Request line: GET /app/temp.html HTTP/1.1
+[DEBUG] Request line: GET /app/temp.html HTTP/1.1
+[DEBUG] Request line: POST /upload HTTP/1.1
+[DEBUG] Raw content length: 82
+[DEBUG] Content preview: graph.PlusAgent
+input_a,input_b
+sum_output
+graph.IncAgent
+sum_output
+final_result
+
+[DEBUG] Processing as plain content
+[DEBUG] Cleared previous topics
+[DEBUG] About to create config from file: /var/folders/f5/gsx5dxy538z0xyk3rpdwmjqr0000gn/T/conf_upload_650216973386843931.conf
+[DEBUG] Config created successfully
+[DEBUG] Graph created with 6 nodes
+[DEBUG] Topics in TopicManager: 4
+[DEBUG] Request line: GET /publish HTTP/1.1
+[DEBUG] Request line: POST /upload HTTP/1.1
+[DEBUG] Raw content length: 185
+[DEBUG] Content preview: graph.PlusAgent
+A,B
+E
+graph.MaxAgent
+A,B
+F
+graph.MinAgent
+A,B
+G
+graph.IncAgent
+E
+H
+graph.IncAgent
+F
+I
+graph.IncAgent
+G
+J
+graph.MaxAgent
+H,I
+K
+------WebKitFormBoundary7jod7EWQBlZtF9W0--
+
+[DEBUG] Processing as plain content
+[DEBUG] Cleared previous topics
+[DEBUG] About to create config from file: /var/folders/f5/gsx5dxy538z0xyk3rpdwmjqr0000gn/T/conf_upload_15209702579038655310.conf
+[DEBUG] Config created successfully
+[DEBUG] Graph created with 16 nodes
+[DEBUG] Topics in TopicManager: 9
+[DEBUG] Request line: GET /publish HTTP/1.1
+[DEBUG] Request line: POST /upload HTTP/1.1
+[DEBUG] Raw content length: 132
+[DEBUG] Content preview: graph.PlusAgent
+A,B
+C
+graph.MultiplyAgent
+A,B
+D
+graph.IncAgent
+C
+E
+graph.PlusAgent
+D,E
+F
+------WebKitFormBoundarynYjgnzvEiENl2hkk--
+
+[DEBUG] Processing as plain content
+[DEBUG] Cleared previous topics
+[DEBUG] About to create config from file: /var/folders/f5/gsx5dxy538z0xyk3rpdwmjqr0000gn/T/conf_upload_14376413927456234643.conf
+[DEBUG] Config created successfully
+[DEBUG] Graph created with 10 nodes
+[DEBUG] Topics in TopicManager: 6
+[DEBUG] Request line: GET /publish HTTP/1.1
+[DEBUG] Request line: POST /upload HTTP/1.1
+[DEBUG] Raw content length: 82
+[DEBUG] Content preview: graph.PlusAgent
+input_a,input_b
+sum_output
+graph.IncAgent
+sum_output
+final_result
+
+[DEBUG] Processing as plain content
+[DEBUG] Cleared previous topics
+[DEBUG] About to create config from file: /var/folders/f5/gsx5dxy538z0xyk3rpdwmjqr0000gn/T/conf_upload_11015386091084529738.conf
+[DEBUG] Config created successfully
+[DEBUG] Graph created with 6 nodes
+[DEBUG] Topics in TopicManager: 4
+[DEBUG] Request line: GET /publish HTTP/1.1
+[DEBUG] Request line: GET /publish?topic=input_a&message=4 HTTP/1.1
+[DEBUG] Request line: GET /graph HTTP/1.1
+[DEBUG] Request line: GET /publish?topic=input_b&message=5 HTTP/1.1
+[DEBUG] Request line: GET /graph HTTP/1.1
+[DEBUG] Request line: GET /publish?topic=input_a&message=8 HTTP/1.1
+[DEBUG] Request line: GET /graph HTTP/1.1
+[DEBUG] Request line: GET /publish?topic=4&message=4 HTTP/1.1
+[DEBUG] Request line: GET /graph HTTP/1.1
+[DEBUG] Request line: GET /app/index.html HTTP/1.1
+[DEBUG] Request line: GET /app/form.html HTTP/1.1
+[DEBUG] Request line: GET /app/temp.html HTTP/1.1
+[DEBUG] Request line: GET /app/temp.html HTTP/1.1
+[DEBUG] Request line: GET /app/index.html HTTP/1.1
+[DEBUG] Request line: GET /app/form.html HTTP/1.1
+[DEBUG] Request line: GET /app/temp.html HTTP/1.1
+[DEBUG] Request line: GET /app/temp.html HTTP/1.1
+[DEBUG] Request line: POST /upload HTTP/1.1
+[DEBUG] Raw content length: 54
+[DEBUG] Content preview: graph.PlusAgent
+a,b
+sum
+graph.BinOpAgent
+sum,c
+result
+
+[DEBUG] Processing as plain content
+[DEBUG] Cleared previous topics
+[DEBUG] About to create config from file: /var/folders/f5/gsx5dxy538z0xyk3rpdwmjqr0000gn/T/conf_upload_13051342207726537072.conf
+java.lang.RuntimeException: Failed to create agent: graph.BinOpAgent
+	at configs.GenericConfig.create(GenericConfig.java:82)
+	at servlets.ConfLoader.handle(ConfLoader.java:95)
+	at server.MyHTTPServer.handleRequest(MyHTTPServer.java:295)
+	at server.MyHTTPServer.lambda$run$0(MyHTTPServer.java:178)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+Caused by: java.lang.NoSuchMethodException: graph.BinOpAgent.<init>([Ljava.lang.String;,[Ljava.lang.String;)
+	at java.base/java.lang.Class.getConstructor0(Class.java:3761)
+	at java.base/java.lang.Class.getConstructor(Class.java:2442)
+	at configs.GenericConfig.create(GenericConfig.java:74)
+	... 6 more
+[DEBUG] Request line: POST /upload HTTP/1.1
+[DEBUG] Raw content length: 54
+[DEBUG] Content preview: graph.PlusAgent
+a,b
+sum
+graph.BinOpAgent
+sum,c
+result
+
+[DEBUG] Processing as plain content
+[DEBUG] Cleared previous topics
+[DEBUG] About to create config from file: /var/folders/f5/gsx5dxy538z0xyk3rpdwmjqr0000gn/T/conf_upload_2413340253077824617.conf
+java.lang.RuntimeException: Failed to create agent: graph.BinOpAgent
+	at configs.GenericConfig.create(GenericConfig.java:82)
+	at servlets.ConfLoader.handle(ConfLoader.java:95)
+	at server.MyHTTPServer.handleRequest(MyHTTPServer.java:295)
+	at server.MyHTTPServer.lambda$run$0(MyHTTPServer.java:178)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+Caused by: java.lang.NoSuchMethodException: graph.BinOpAgent.<init>([Ljava.lang.String;,[Ljava.lang.String;)
+	at java.base/java.lang.Class.getConstructor0(Class.java:3761)
+	at java.base/java.lang.Class.getConstructor(Class.java:2442)
+	at configs.GenericConfig.create(GenericConfig.java:74)
+	... 6 more
+[DEBUG] Request line: GET /app/index.html HTTP/1.1
+[DEBUG] Request line: GET /app/form.html HTTP/1.1
+[DEBUG] Request line: GET /app/temp.html HTTP/1.1
