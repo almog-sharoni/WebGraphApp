@@ -90,7 +90,7 @@ The system supports various types of agents including mathematical operations (P
 
 ## 🚀 How to Run
 
-### Quick Start
+### Quick Start (on macOS/Linux)
 
 1. **Make the startup script executable** (if on macOS/Linux):
    ```bash
