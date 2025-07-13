@@ -273,7 +273,7 @@ javadoc -d javadoc -sourcepath . -subpackages server
 ## 🛑 Stopping the Server
 
 - **Interactive Mode**: Press Enter in the terminal where the server is running
-- **Force Stop**: Press `Ctrl+C` (or `Cmd+C` on macOS)
+- **Force Stop**: Press `Ctrl+C` 
 
 ## 📝 Notes
 
